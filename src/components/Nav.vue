@@ -1,14 +1,14 @@
 <template>
     <nav>
-        <router-link class="item" to="/money">
+        <router-link active-class="selected" class="item" to="/money">
             <Icon name="money"/>
             记账
         </router-link>
-        <router-link class="item" to="/labels">
+        <router-link active-class="selected" class="item" to="/labels">
             <Icon name="label"/>
             标签
         </router-link>
-        <router-link class="item" to="statistics">
+        <router-link active-class="selected" class="item" to="statistics">
             <Icon name="statistics"/>
             统计
         </router-link>
@@ -28,10 +28,12 @@
 </script>
 
 <style lang="scss" scoped>
+    @import "~@/assets/styles/helpr.scss";
+
     nav {
         display: flex;
         flex-direction: row;
-        box-shadow: 0 0 3px rgba(0,0,0,0.25);
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
         justify-content: space-around;
 
         .item {
@@ -40,6 +42,10 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+        }
+
+        .selected {
+            color: $color-highLight;
         }
     }
 </style>
