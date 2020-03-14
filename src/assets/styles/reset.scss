@@ -12,3 +12,11 @@ a {
 ul, ol {
   list-style: none;
 }
+
+button,input{
+  font: inherit;
+}
+
+:focus{
+  outline: none;
+}

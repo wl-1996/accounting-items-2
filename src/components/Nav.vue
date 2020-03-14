@@ -28,13 +28,13 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "~@/assets/styles/helpr.scss";
+    @import "~@/assets/styles/helper.scss";
 
     nav {
         display: flex;
         flex-direction: row;
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
         justify-content: space-around;
+        @extend %outerShadow;
 
         .item {
             padding: 2px 0;

@@ -16,7 +16,7 @@
 
 <style lang="scss">
     @import "~@/assets/styles/reset.scss";
-    @import "~@/assets/styles/helpr.scss";
+    @import "~@/assets/styles/helper.scss";
 
     body {
         line-height: 1.5;
