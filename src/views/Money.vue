@@ -1,6 +1,6 @@
 <template>
     <Layout classPrefix="layout">
-        <Tags/>
+        <Tags :data-source='tagList'/>
         <Notes/>
         <Types/>
         <NumberPad/>
@@ -19,7 +19,7 @@
         components: {NumberPad, Types, Notes, Tags}
     })
     export default class Money extends Vue {
-
+        tagList: string[] = ['衣', '食', '住', '出'];
     }
 </script>
 
