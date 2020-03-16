@@ -1,6 +1,6 @@
 <template>
     <div class="numberPad">
-        <div class="output">{{this.output}}</div>
+        <div class="output">{{output}}</div>
         <div class="buttons">
             <button @click="changeOutput">1</button>
             <button @click="changeOutput">2</button>
@@ -13,7 +13,7 @@
             <button @click="changeOutput">7</button>
             <button @click="changeOutput">8</button>
             <button @click="changeOutput">9</button>
-            <button class="ok">OK</button>
+            <button @click="ok" class="ok">OK</button>
             <button @click="changeOutput" class="zero">0</button>
             <button @click="changeOutput">.</button>
         </div>
@@ -22,21 +22,24 @@
 
 <script lang="ts">
     import Vue from 'vue';
-    import {Component} from 'vue-property-decorator';
+    import {Component, Prop} from 'vue-property-decorator';
 
     @Component
     export default class NumberPad extends Vue {
-        output = '0';
+        @Prop(Number) readonly value!: number;
+        output = this.value.toString();
+
+        // value = '0';
 
         changeOutput(event: MouseEvent) {
             const button = event.target as HTMLButtonElement;
-            const input = button.textContent;
+            const input = button.textContent!;
             //计算机最多只能输入16位
             if (this.output.length === 16) {
                 return;
             }
             if (this.output === '0') {
-                if (input && ('0123456789').indexOf(input) > -1) {
+                if (('0123456789').indexOf(input) > -1) {
                     this.output = input;
                 } else {
                     this.output += input;
@@ -58,6 +61,10 @@
 
         clear() {
             this.output = '0';
+        }
+
+        ok() {
+            this.$emit('update:value', parseFloat(this.output));
         }
     }
 </script>
