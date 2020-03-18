@@ -42,6 +42,11 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+
+            .icon{
+                width: 32px;
+                height: 32px;
+            }
         }
 
         .selected {

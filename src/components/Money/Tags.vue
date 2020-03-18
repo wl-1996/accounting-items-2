@@ -36,8 +36,12 @@
             if (!name || name.match(/^[ ]+$/)) {
                 window.alert('标签名不能为空');
             } else if (this.dataSource) {
-                this.$emit('update:dataSource',
-                    [...this.dataSource, name]);
+                if (this.dataSource.indexOf(name) > -1) {
+                    window.alert('标签名不能重复，请重新输入');
+                } else {
+                    this.$emit('update:dataSource',
+                        [...this.dataSource, name]);
+                }
             }
         }
     }
