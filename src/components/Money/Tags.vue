@@ -18,7 +18,7 @@
 
     @Component
     export default class Tags extends Vue {
-        @Prop(Array) readonly dataSource: string[] | undefined;
+        @Prop(Array) readonly dataSource: Tag[] | undefined;
         selectedTags: string[] = [];
 
         toggle(value: string) {
@@ -34,9 +34,10 @@
         create() {
             const name = window.prompt('请输入标签名');
             if (!name || name.match(/^[ ]+$/)) {
-                window.alert('标签名不能为空ya');
+                window.alert('标签名不能为空');
             } else if (this.dataSource) {
                 const names = this.dataSource.map(i => i.name);
+                console.log(names);
                 if (names.indexOf(name) > -1) {
                     window.alert('标签名不能重复，请重新输入');
                 } else {

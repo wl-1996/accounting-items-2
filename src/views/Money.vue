@@ -4,7 +4,9 @@
         <Tags @update:value="onUpdateTags"
               :data-source.sync='tagList'
         />
-        <Notes @update:value="onUpdateNotes"/>
+        <Notes field-name="备注"
+               placeholder="在这里添加备注"
+                @update:value="onUpdateNotes"/>
         <Types :value.sync="record.type"/>
         <NumberPad @submit="saveRecord"
                    :value.sync="record.amount"/>
