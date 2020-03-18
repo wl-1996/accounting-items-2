@@ -4,9 +4,9 @@
             <button @click="create">新增标签</button>
         </div>
         <ul class="current">
-            <li v-for="tag in dataSource" :key="tag"
+            <li v-for="tag in dataSource" :key="tag.id"
                 @click="toggle(tag)"
-                :class="{selected: selectedTags.indexOf(tag) > -1}">{{tag}}
+                :class="{selected: selectedTags.indexOf(tag) > -1}">{{tag.name}}
             </li>
         </ul>
     </div>
@@ -34,13 +34,15 @@
         create() {
             const name = window.prompt('请输入标签名');
             if (!name || name.match(/^[ ]+$/)) {
-                window.alert('标签名不能为空');
+                window.alert('标签名不能为空ya');
             } else if (this.dataSource) {
-                if (this.dataSource.indexOf(name) > -1) {
+                const names = this.dataSource.map(i => i.name);
+                if (names.indexOf(name) > -1) {
                     window.alert('标签名不能重复，请重新输入');
                 } else {
+                    console.log(this.dataSource);
                     this.$emit('update:dataSource',
-                        [...this.dataSource, name]);
+                        [...this.dataSource, {id: name, name: name}]);
                 }
             }
         }

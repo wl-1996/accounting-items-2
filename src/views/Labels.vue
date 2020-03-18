@@ -1,11 +1,12 @@
 <template>
     <Layout>
-        <ol class="tags">
-            <li v-for="tag in tagList" :key="tag">
-                <span>{{tag}}</span>
+        <div class="tags">
+            <router-link class="tag"
+                         :to="`/labels/edit/${tag.id}`" v-for="tag in tagList" :key="tag.id">
+                <span>{{tag.name}}</span>
                 <Icon name="right"/>
-            </li>
-        </ol>
+            </router-link>
+        </div>
         <button @click="create" class="createTag">新建标签</button>
     </Layout>
 </template>
@@ -18,7 +19,7 @@
     tagListModel.fetch();
     @Component
     export default class Labels extends Vue {
-        tagList: string[] = tagListModel.data;
+        tagList: Tag[] = tagListModel.data;
 
         create() {
             const name = window.prompt('请输入标签名');
@@ -39,7 +40,7 @@
         background: white;
         font-size: 16px;
 
-        li {
+         .tag {
             display: flex;
             flex-direction: row;
             justify-content: space-between;

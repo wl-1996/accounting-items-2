@@ -1,7 +1,11 @@
 const localStorageKeyName = 'tagList';
+type Tag = {
+    id: string;
+    name: string;
+}
 type TagListModel = {
-    data: string[];
-    fetch: () => string[];
+    data: Tag[];
+    fetch: () => Tag[];
     create: (name: string) => string;
     save: () => void;
 }
@@ -15,10 +19,15 @@ const tagListModel: TagListModel = {
         window.localStorage.setItem(localStorageKeyName, JSON.stringify(this.data));
     },
     create(name) {
-        if (this.data.indexOf(name) > -1) {
+        const names = this.data.map(i => i.name);
+        if (names.indexOf(name) > -1) {
             window.alert('标签名不能重复');
-        }  else {
-            this.data.push(name);
+        } else {
+            const newTag = {
+                id: name,
+                name: name
+            };
+            this.data.push(newTag);
             this.save();
         }
         return name;
