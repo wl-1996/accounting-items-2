@@ -1,8 +1,10 @@
+import createId from '@/lib/createId';
+
 const localStorageKeyName = 'tagList';
-type Tag = {
-    id: string;
-    name: string;
-}
+// type Tag = {
+//     id: string;
+//     name: string;
+// }
 type TagListModel = {
     data: Tag[];
     fetch: () => Tag[];
@@ -26,13 +28,13 @@ const tagListModel: TagListModel = {
             window.alert('标签名不能重复');
         } else {
             const newTag = {
-                id: name,
+                id: createId().toString(),
                 name: name
             };
             this.data.push(newTag);
             this.save();
         }
-        return name;
+        return 'success';
     },
     update(id: string, name: string) {
         const idList = this.data.map(i => i.id);
