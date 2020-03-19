@@ -15,13 +15,14 @@
 <script lang="ts">
     import Vue from 'vue';
     import {Component, Prop} from 'vue-property-decorator';
+    import tagListModel from '@/models/tagListModel';
 
     @Component
     export default class Tags extends Vue {
         @Prop(Array) readonly dataSource: Tag[] | undefined;
-        selectedTags: string[] = [];
+        selectedTags: Tag[] = [];
 
-        toggle(value: string) {
+        toggle(value: Tag) {
             const index = this.selectedTags.indexOf(value);
             if (index > -1) {
                 this.selectedTags.splice(index, 1);
@@ -35,16 +36,8 @@
             const name = window.prompt('请输入标签名');
             if (!name || name.match(/^[ ]+$/)) {
                 window.alert('标签名不能为空');
-            } else if (this.dataSource) {
-                const names = this.dataSource.map(i => i.name);
-                console.log(names);
-                if (names.indexOf(name) > -1) {
-                    window.alert('标签名不能重复，请重新输入');
-                } else {
-                    console.log(this.dataSource);
-                    this.$emit('update:dataSource',
-                        [...this.dataSource, {id: name, name: name}]);
-                }
+            } else {
+                tagListModel.create(name);
             }
         }
     }
