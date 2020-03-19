@@ -30,7 +30,7 @@
         components: {NumberPad, Types, FormItem, Tags}
     })
     export default class Money extends Vue {
-        tagList: Tag[] = tagListModel.fetch();
+        tagList = tagListModel.fetch();
         recordList = recordListModel.fetch();
         record: RecordItem = {
             tags: [],
@@ -39,7 +39,7 @@
             amount: 0,
         };
 
-        onUpdateTags(value: string[]) {
+        onUpdateTags(value: Tag[]) {
             this.record.tags = value;
         }
 
