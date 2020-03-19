@@ -59,6 +59,7 @@
         display: flex;
         flex-direction: column-reverse;
         padding-left: 16px;
+        background: white;
 
         .current {
             display: flex;
