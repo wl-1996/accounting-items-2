@@ -48,10 +48,7 @@
         }
 
         saveRecord() {
-            const record2: RecordItem = recordListModel.clone(this.record);
-            record2.createdAt = new Date();
-            this.recordList.push(record2);
-            recordListModel.save(this.recordList);
+            recordListModel.create(this.record)
         }
     }
 </script>
@@ -64,7 +61,7 @@
 </style>
 
 <style lang="scss" scoped>
-    .notes{
+    .notes {
         padding: 20px 0;
     }
 </style>
