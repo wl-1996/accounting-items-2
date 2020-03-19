@@ -5,7 +5,8 @@
             <span class="title">编辑标签</span>
         </div>
         <div class="form-wrapper">
-            <FormItem placeholder="请输入标签名"
+            <FormItem :value="tag.name"
+                      placeholder="请输入标签名"
                       field-name="标签名"/>
         </div>
         <Button>删除标签</Button>
@@ -23,7 +24,20 @@
         components: {Button, FormItem}
     })
     export default class EditLabel extends Vue {
+        tag?: Tag = undefined;
 
+        created() {
+            const id = this.$route.params.id;
+            tagListModel.fetch();
+            const tags = tagListModel.data;
+            const tag = tags.filter(i => i.id === id)[0];
+            if (tag) {
+                console.log(tag);
+                this.tag = tag;
+            } else {
+                this.$router.replace('/404');
+            }
+        }
     }
 </script>
 
@@ -41,7 +55,8 @@
             transform: translateX(-50%);
         }
     }
-    .form-wrapper{
+
+    .form-wrapper {
         margin-top: 8px;
         background: white;
         padding: 12px 0;

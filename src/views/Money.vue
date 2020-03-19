@@ -1,5 +1,6 @@
 <template>
     <Layout classPrefix="layout">
+        {{record}}
         <Tags @update:value="onUpdateTags"
               :data-source.sync='tagList'
         />
