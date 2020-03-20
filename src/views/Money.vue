@@ -1,8 +1,7 @@
 <template>
     <Layout classPrefix="layout">
-        {{record}}
+<!--        {{recordList}}-->
         <Tags @update:value="onUpdateTags"
-              :data-source.sync='tagList'
         />
         <div class="notes">
             <FormItem field-name="备注"

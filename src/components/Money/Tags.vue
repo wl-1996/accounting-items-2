@@ -4,7 +4,7 @@
             <button @click="create">新增标签</button>
         </div>
         <ul class="current">
-            <li v-for="tag in dataSource" :key="tag.id"
+            <li v-for="tag in tagList" :key="tag.id"
                 @click="toggle(tag)"
                 :class="{selected: selectedTags.indexOf(tag) > -1}">{{tag.name}}
             </li>
@@ -14,16 +14,17 @@
 
 <script lang="ts">
     import Vue from 'vue';
-    import {Component, Prop} from 'vue-property-decorator';
+    import {Component} from 'vue-property-decorator';
     import tagListModel from '@/models/tagListModel';
 
     @Component
     export default class Tags extends Vue {
-        @Prop(Array) readonly dataSource: Tag[] | undefined;
+        tagList = tagListModel.fetch();
         selectedTags: Tag[] = [];
 
         toggle(value: Tag) {
             const index = this.selectedTags.indexOf(value);
+            console.log(index);
             if (index > -1) {
                 this.selectedTags.splice(index, 1);
             } else {
@@ -62,16 +63,12 @@
             $bg: #D9D9D9;
 
             li {
-                width: 49px;
-                height: 24px;
+                padding: 2px 17.5px;
                 background: $bg;
                 border-radius: 18px;
                 margin-right: 24px;
                 margin-top: 10px;
                 color: #484848;
-                display: flex;
-                justify-content: center;
-                align-items: center;
             }
 
             .selected {
