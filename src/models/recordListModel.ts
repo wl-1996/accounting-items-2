@@ -1,12 +1,6 @@
 import clone from '@/lib/clone';
 
 const localStorageKeyName = 'recordList';
-type RecordListModel = {
-    data: RecordItem[];
-    fetch: () => RecordItem[];
-    save: () => void;
-    create: (data: RecordItem) => void;
-}
 const recordListModel: RecordListModel = {
     data: [],
     fetch() {

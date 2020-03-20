@@ -10,3 +10,19 @@ type Tag = {
     id: string;
     name: string;
 }
+
+type TagListModel = {
+    data: Tag[];
+    fetch: () => Tag[];
+    create: (name: string) => string;
+    update: (id: string, name: string) => 'success' | 'not found' | 'duplicated';
+    save: () => void;
+    remove: (id: string) => boolean;
+}
+
+type RecordListModel = {
+    data: RecordItem[];
+    fetch: () => RecordItem[];
+    save: () => void;
+    create: (data: RecordItem) => void;
+}

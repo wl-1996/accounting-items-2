@@ -17,12 +17,11 @@
     import tagListModel from '@/models/tagListModel';
     import Button from '@/components/Button.vue';
 
-    // tagListModel.fetch();
     @Component({
         components: {Button}
     })
     export default class Labels extends Vue {
-        tagList: Tag[] = tagListModel.fetch();
+        tagList = tagListModel.fetch();
 
         create() {
             const name = window.prompt('请输入标签名');
