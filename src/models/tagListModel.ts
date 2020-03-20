@@ -20,9 +20,9 @@ const tagListModel: TagListModel = {
                 name: name
             };
             this.data.push(newTag);
+            window.alert('添加成功')
             this.save();
         }
-        return 'success';
     },
     update(id: string, name: string) {
         const idList = this.data.map(i => i.id);
