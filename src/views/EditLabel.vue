@@ -29,8 +29,7 @@
 
         created() {
             const id = this.$route.params.id;
-            tagListModel.fetch();
-            const tags = tagListModel.data;
+            const tags = tagListModel.fetch();
             const tag = tags.filter(i => i.id === id)[0];
             if (tag) {
                 this.tag = tag;
