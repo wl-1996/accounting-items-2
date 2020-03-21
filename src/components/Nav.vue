@@ -8,7 +8,7 @@
             <Icon name="label"/>
             标签
         </router-link>
-        <router-link active-class="selected" class="item" to="statistics">
+        <router-link active-class="selected" class="item" to="/statistics">
             <Icon name="statistics"/>
             统计
         </router-link>

@@ -32,7 +32,7 @@
 
         created() {
             const id = this.$route.params.id;
-            const tags = this.$store.state.tagList;
+            const tags: Tag[] = this.$store.state.tagList;
             const tag = tags.filter(i => i.id === id)[0];
             if (tag) {
                 this.tag = tag;
