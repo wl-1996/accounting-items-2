@@ -15,11 +15,14 @@
 <script lang="ts">
     import Vue from 'vue';
     import {Component} from 'vue-property-decorator';
-    import tagListModel from '@/models/tagListModel';
 
     @Component
     export default class Tags extends Vue {
-        tagList = tagListModel.fetch();
+        beforeCreate() {
+            this.$store.commit('fetchTags');
+        }
+
+        tagList = this.$store.state.tagList;
         selectedTags: Tag[] = [];
 
         toggle(value: Tag) {
@@ -38,7 +41,7 @@
             if (!name || name.match(/^[ ]+$/)) {
                 window.alert('标签名不能为空');
             } else {
-                tagListModel.create(name);
+                this.$store.commit('createTag',name)
             }
         }
     }

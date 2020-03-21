@@ -21,15 +21,16 @@
     import FormItem from '@/components/Money/FormItem.vue';
     import Types from '@/components/Money/Types.vue';
     import NumberPad from '@/components/Money/NumberPad.vue';
-    import recordListModel from '@/models/recordListModel';
-    import tagListModel from '@/models/tagListModel';
 
     @Component({
         components: {NumberPad, Types, FormItem, Tags},
     })
     export default class Money extends Vue {
-        tagList = tagListModel.fetch();
-        recordList = recordListModel.fetch();
+        beforeCreate() {
+            this.$store.commit('fetchRecords');
+        }
+
+        recordList = this.$store.state.recordList;
         record: RecordItem = {
             tags: [],
             notes: '',
@@ -46,7 +47,7 @@
         }
 
         saveRecord() {
-            recordListModel.create(this.record);
+            this.$store.commit('createRecord', this.record);
         }
     }
 </script>
