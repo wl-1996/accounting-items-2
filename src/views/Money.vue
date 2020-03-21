@@ -1,6 +1,6 @@
 <template>
     <Layout classPrefix="layout">
-<!--        {{recordList}}-->
+        <!--        {{recordList}}-->
         <Tags @update:value="onUpdateTags"
         />
         <div class="notes">
@@ -24,9 +24,8 @@
     import recordListModel from '@/models/recordListModel';
     import tagListModel from '@/models/tagListModel';
 
-
     @Component({
-        components: {NumberPad, Types, FormItem, Tags}
+        components: {NumberPad, Types, FormItem, Tags},
     })
     export default class Money extends Vue {
         tagList = tagListModel.fetch();
@@ -47,7 +46,7 @@
         }
 
         saveRecord() {
-            recordListModel.create(this.record)
+            recordListModel.create(this.record);
         }
     }
 </script>
