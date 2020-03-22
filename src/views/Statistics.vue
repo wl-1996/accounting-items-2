@@ -29,6 +29,10 @@
 </script>
 
 <style lang="scss" scoped>
+    ::v-deep ul li.interval-tabs-item {
+        height: 50px;
+    }
+
     ::v-deep .type-tabs-item {
         background: white;
 
