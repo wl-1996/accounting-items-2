@@ -22,12 +22,11 @@
             this.$store.commit('fetchTags');
         }
 
-        tagList = this.$store.state.tagList;
+        tagList: Tag[] = this.$store.state.tagList;
         selectedTags: Tag[] = [];
 
         toggle(value: Tag) {
             const index = this.selectedTags.indexOf(value);
-            console.log(index);
             if (index > -1) {
                 this.selectedTags.splice(index, 1);
             } else {

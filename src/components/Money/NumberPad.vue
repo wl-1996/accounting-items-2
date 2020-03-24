@@ -29,8 +29,6 @@
         @Prop(Number) readonly value!: number;
         output = this.value.toString();
 
-        // value = '0';
-
         changeOutput(event: MouseEvent) {
             const button = event.target as HTMLButtonElement;
             const input = button.textContent!;
@@ -65,7 +63,7 @@
 
         ok() {
             this.$emit('update:value', parseFloat(this.output));
-            this.$emit('submit', this.output);
+            this.$emit('submit', parseFloat(this.output));
             this.output = '0';
         }
     }
