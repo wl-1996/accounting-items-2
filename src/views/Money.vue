@@ -4,9 +4,10 @@
         <Tags @update:value="onUpdateTags"
         />
         <div class="notes">
-            <FormItem field-name="备注"
+            <FormItem :value.sync="record.notes"
+                      field-name="备注"
                       placeholder="在这里添加备注"
-                      @update:value="onUpdateNotes"/>
+            />
         </div>
         <Tabs :data-source="typeList" :value.sync="record.type"/>
         <NumberPad @submit="saveRecord"
@@ -46,12 +47,13 @@
             this.record.tags = value;
         }
 
-        onUpdateNotes(value: string) {
-            this.record.notes = value;
-        }
-
         saveRecord() {
-            this.$store.commit('createRecord', this.record);
+            if (!this.record.tags || this.record.tags.length === 0) {
+                window.alert('请至少选择一个标签');
+            } else {
+                this.record.notes = '';
+                this.$store.commit('createRecord', this.record);
+            }
         }
     }
 </script>

@@ -36,20 +36,21 @@
         justify-content: space-around;
         @extend %outerShadow;
 
-        .item {
+        > .item {
             padding: 2px 0;
             display: flex;
+            width: 33.3333%;
             flex-direction: column;
             justify-content: center;
             align-items: center;
 
-            .icon{
+            .icon {
                 width: 32px;
                 height: 32px;
             }
         }
 
-        .selected {
+        > .item.selected {
             color: $color-highLight;
         }
     }

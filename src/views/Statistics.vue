@@ -1,7 +1,7 @@
 <template>
     <Layout class="wrapper">
         <Tabs class-prefix="type" :data-source="typeList" :value.sync="type"/>
-        <ol>
+        <ol v-if="groupdList.length > 0">
             <li v-for="(group,index) in groupdList" :key="index">
                 <h3 class="title">
                     {{beautify(group.title)}}
@@ -16,6 +16,7 @@
                 </ol>
             </li>
         </ol>
+        <div v-else class="noResult">该类型没有记录，请添加后进行查看</div>
     </Layout>
 </template>
 
@@ -60,10 +61,11 @@
 
         get groupdList() {
             const {recordList} = this;
-            if (recordList.length === 0) {
+
+            const newRecordList = clone(recordList).filter(r => r.type === this.type).sort((a, b) => dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf());
+            if (newRecordList.length === 0) {
                 return [];
             }
-            const newRecordList = clone(recordList).filter(r => r.type === this.type).sort((a, b) => dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf());
             type Result = {
                 title: string;
                 total?: number;
@@ -100,6 +102,11 @@
 </script>
 
 <style lang="scss" scoped>
+    .noResult{
+        padding: 16px;
+        text-align: center;
+    }
+
     .wrapper {
         height: 100vh;
     }

@@ -40,7 +40,8 @@
             if (!name || name.match(/^[ ]+$/)) {
                 window.alert('标签名不能为空');
             } else {
-                this.$store.commit('createTag',name)
+                this.$store.commit('createTag',name);
+                window.alert('添加成功');
             }
         }
     }
