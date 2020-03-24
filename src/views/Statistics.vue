@@ -1,5 +1,5 @@
 <template>
-    <Layout class="wrapper">
+    <Layout>
         <Tabs class-prefix="type" :data-source="typeList" :value.sync="type"/>
         <ol v-if="groupdList.length > 0">
             <li v-for="(group,index) in groupdList" :key="index">
@@ -102,14 +102,11 @@
 </script>
 
 <style lang="scss" scoped>
-    .noResult{
+    .noResult {
         padding: 16px;
         text-align: center;
     }
 
-    .wrapper {
-        height: 100vh;
-    }
 
     ::v-deep {
         ul li.interval-tabs-item {
