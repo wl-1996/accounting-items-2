@@ -31,6 +31,10 @@
     @import "~@/assets/styles/helper.scss";
 
     nav {
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        background: #eee;
         display: flex;
         flex-direction: row;
         justify-content: space-around;

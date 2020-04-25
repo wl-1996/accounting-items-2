@@ -21,8 +21,9 @@
         min-height: 100vh;
 
         > .content {
+            margin-bottom: 10vh;
             flex-grow: 1;
-            overflow: auto;
+            /*overflow: auto;*/
         }
     }
 </style>
