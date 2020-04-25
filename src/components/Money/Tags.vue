@@ -40,8 +40,13 @@
             if (!name || name.match(/^[ ]+$/)) {
                 window.alert('标签名不能为空');
             } else {
-                this.$store.commit('createTag',name);
-                window.alert('添加成功');
+                this.$store.commit('createTag', name);
+                //如果标签重复，就可以打出错误信息：
+                if (this.$store.state.createTagError) {
+                    window.alert(this.$store.state.createTagError);
+                } else {
+                    window.alert('添加成功');
+                }
             }
         }
     }

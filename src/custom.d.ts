@@ -10,3 +10,5 @@ type Tag = {
     id: string;
     name: string;
 }
+
+type tagError = Error | null;

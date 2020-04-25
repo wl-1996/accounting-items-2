@@ -8,6 +8,7 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
         tagList: [] as Tag[],
+        createTagError: null as tagError,
         recordList: [] as RecordItem[]
     },
     mutations: {
@@ -39,8 +40,9 @@ const store = new Vuex.Store({
         createTag(state, name) {
             const names = state.tagList.map(i => i.name);
             if (names.indexOf(name) > -1) {
-                window.alert('标签名不能重复');
+                state.createTagError = new Error('标签名重复');
             } else {
+                state.createTagError = null;
                 const newTag = {
                     id: createId().toString(),
                     name: name
